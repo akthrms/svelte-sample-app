@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "Todo.svelte"
+  ],
+  "sourcesContent": [
+    "<script lang=\"ts\">import { data } from \"./../store/todo\";\n$: isEmpty = $data.newItem.trim() === \"\";\n</script>\n\n<style>\n  span.done {\n    text-decoration: line-through;\n  }\n</style>\n\n<section class=\"hero is-primary\">\n  <div class=\"hero-body\">\n    <div class=\"container\">\n      <h1 class=\"title\">TODO アプリ</h1>\n      <p class=\"subtitle\">\n        written in Svelte - Cybernetically enhanced web apps\n      </p>\n    </div>\n  </div>\n</section>\n\n<section class=\"section\">\n  <div class=\"container\">\n    <div class=\"field is-grouped\">\n      <div class=\"control\">\n        <input\n          type=\"text\"\n          class=\"input\"\n          bind:value={$data.newItem}\n          placeholder=\"入力してください\" />\n      </div>\n      <div class=\"control\">\n        <button\n          class=\"button is-info\"\n          on:click={data.resetItem}>リセットする</button>\n      </div>\n      <div class=\"control\">\n        <button\n          class=\"button is-primary\"\n          disabled={isEmpty}\n          on:click={data.addItem}>追加する</button>\n      </div>\n    </div>\n\n    <br />\n\n    <table class=\"table is-striped is-hoverable\">\n      <tbody>\n        {#each $data.todos as { item, isDone }, index}\n          <tr>\n            <th>\n              <input class=\"checkbox\" type=\"checkbox\" bind:checked={isDone} />\n            </th>\n            <th><span class={isDone ? 'done' : ''}>{item}</span></th>\n            <th>\n              <button\n                class=\"button is-danger\"\n                on:click={data.deleteItem(index)}>削除する</button>\n            </th>\n          </tr>\n        {/each}\n      </tbody>\n    </table>\n  </div>\n</section>\n"
+  ],
+  "names": [],
+  "mappings": "AAKE,IAAI,KAAK,eAAC,CAAC,AACT,eAAe,CAAE,YAAY,AAC/B,CAAC"
+}
