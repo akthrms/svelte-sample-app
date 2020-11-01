@@ -25,9 +25,9 @@
   <div class="container">
     <div class="field">
       <div class="control">
-        <input
-          type="text"
-          class="input"
+        <textarea
+          class="textarea"
+          rows="3"
           bind:value={$data.newItem}
           placeholder="入力してください" />
       </div>
@@ -46,16 +46,21 @@
 
     <table class="table is-striped is-hoverable is-fullwidth">
       <tbody>
-        {#each $data.todos as { item, isDone }, index}
+        {#each $data.todos as { item, isDone }, i}
           <tr>
             <td>
               <input class="checkbox" type="checkbox" bind:checked={isDone} />
             </td>
-            <td class={isDone ? 'done' : ''}>{item}</td>
+            <td class={isDone ? 'done' : ''}>
+              {#each item.split(/\n/) as line, j}
+                {#if j !== 0}<br />{/if}
+                {line}
+              {/each}
+            </td>
             <td>
               <button
-                class="button is-danger is-rounded"
-                on:click={data.deleteItem(index)}>削除する</button>
+                class="button is-danger is-rounded is-pulled-right"
+                on:click={data.deleteItem(i)}>削除する</button>
             </td>
           </tr>
         {/each}
