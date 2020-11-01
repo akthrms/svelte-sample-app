@@ -5,7 +5,7 @@
 </script>
 
 <style>
-  span.done {
+  td.done {
     text-decoration: line-through;
   }
 </style>
@@ -44,19 +44,19 @@
 
     <br />
 
-    <table class="table is-striped is-hoverable">
+    <table class="table is-striped is-hoverable is-fullwidth">
       <tbody>
         {#each $data.todos as { item, isDone }, index}
           <tr>
-            <th>
+            <td>
               <input class="checkbox" type="checkbox" bind:checked={isDone} />
-            </th>
-            <th><span class={isDone ? 'done' : ''}>{item}</span></th>
-            <th>
+            </td>
+            <td class={isDone ? 'done' : ''}>{item}</td>
+            <td>
               <button
                 class="button is-danger is-rounded"
                 on:click={data.deleteItem(index)}>削除する</button>
-            </th>
+            </td>
           </tr>
         {/each}
       </tbody>
