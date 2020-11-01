@@ -23,7 +23,7 @@
 
 <section class="section">
   <div class="container">
-    <div class="field is-grouped">
+    <div class="field">
       <div class="control">
         <input
           type="text"
@@ -31,17 +31,15 @@
           bind:value={$data.newItem}
           placeholder="入力してください" />
       </div>
-      <div class="control">
-        <button
-          class="button is-info"
-          on:click={data.resetItem}>リセットする</button>
-      </div>
-      <div class="control">
-        <button
-          class="button is-primary"
-          disabled={isEmpty}
-          on:click={data.addItem}>追加する</button>
-      </div>
+    </div>
+    <div class="buttons">
+      <button
+        class="button is-ghost"
+        on:click={data.resetItem}>リセットする</button>
+      <button
+        class="button is-primary"
+        disabled={isEmpty}
+        on:click={data.addItem}>追加する</button>
     </div>
 
     <br />
@@ -56,7 +54,7 @@
             <th><span class={isDone ? 'done' : ''}>{item}</span></th>
             <th>
               <button
-                class="button is-danger"
+                class="button is-danger is-rounded"
                 on:click={data.deleteItem(index)}>削除する</button>
             </th>
           </tr>

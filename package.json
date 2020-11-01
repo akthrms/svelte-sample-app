@@ -6,7 +6,8 @@
     "dev": "rollup -c -w",
     "start": "sirv public",
     "validate": "svelte-check",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d public",
+    "precommit": "npm run build && npm run deploy"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
@@ -30,7 +31,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "deploy"
+      "pre-commit": "precommit"
     }
   }
 }
