@@ -33,12 +33,12 @@
           placeholder="入力してください" />
       </div>
     </div>
-    <div class="buttons">
+    <div class="buttons is-pulled-right">
       <button
-        class="button is-ghost"
+        class="button is-ghost is-medium"
         on:click={data.resetItem}>リセットする</button>
       <button
-        class="button is-primary"
+        class="button is-primary is-medium"
         disabled={isEmpty}
         on:click={data.addItem}>追加する</button>
     </div>
