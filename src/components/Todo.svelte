@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
   import { data } from "./../store/todo";
 
   $: isEmpty = $data.newItem.trim() === "";
@@ -47,7 +48,7 @@
     <table class="table is-striped is-hoverable is-fullwidth">
       <tbody>
         {#each $data.todos as { item, isDone }, i}
-          <tr>
+          <tr transition:fade>
             <td>
               <input class="checkbox" type="checkbox" bind:checked={isDone} />
             </td>
