@@ -61,10 +61,12 @@ const deleteItem = (index: number) => (data: Data): Data => {
   };
 };
 
-const resetItem = (data: Data): Data => {
+const resetItem = ({ currentUserId, users, todos }: Data): Data => {
   return {
+    currentUserId,
+    users,
     newItem: "",
-    ...data,
+    todos,
   };
 };
 
