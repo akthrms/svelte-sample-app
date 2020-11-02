@@ -1,6 +1,4 @@
 <script lang="ts">
-  import Header from "./Header.svelte";
-
   import { fade } from "svelte/transition";
   import { data } from "./../store/todo";
 
@@ -13,7 +11,16 @@
   }
 </style>
 
-<Header />
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">TODO アプリ</h1>
+      <p class="subtitle">
+        written in Svelte - Cybernetically enhanced web apps
+      </p>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container">
