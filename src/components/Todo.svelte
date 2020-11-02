@@ -26,6 +26,17 @@
   <div class="container">
     <div class="field">
       <div class="control">
+        <div class="select is-medium">
+          <select>
+            <option>ユーザー1</option>
+            <option>ユーザー2</option>
+            <option>ユーザー3</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
         <textarea
           class="textarea"
           rows="3"
