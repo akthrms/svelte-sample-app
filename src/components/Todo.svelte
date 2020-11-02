@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Header from "./Header.svelte";
+
   import { fade } from "svelte/transition";
   import { data } from "./../store/todo";
 
@@ -11,16 +13,7 @@
   }
 </style>
 
-<section class="hero is-primary">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">TODO アプリ</h1>
-      <p class="subtitle">
-        written in Svelte - Cybernetically enhanced web apps
-      </p>
-    </div>
-  </div>
-</section>
+<Header />
 
 <section class="section">
   <div class="container">
@@ -33,7 +26,7 @@
           placeholder="入力してください" />
       </div>
     </div>
-    <div class="buttons is-pulled-right">
+    <div class="buttons">
       <button
         class="button is-ghost is-medium"
         on:click={data.resetItem}>リセットする</button>
