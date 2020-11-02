@@ -3,19 +3,28 @@ import { writable } from "svelte/store";
 // Types
 
 type Todo = {
+  userId: number;
   item: string;
   isDone: boolean;
 };
 
+type User = {
+  id: number;
+  name: string;
+};
+
 type Data = {
+  currentUserId: number;
+  users: Array<User>;
   newItem: string;
   todos: Array<Todo>;
 };
 
 // Smart Constructors
 
-const createTodo = (item: string): Todo => {
+const createTodo = (userId: number, item: string): Todo => {
   return {
+    userId,
     item,
     isDone: false,
   };
@@ -24,16 +33,24 @@ const createTodo = (item: string): Todo => {
 // Init
 
 const init: Data = {
+  currentUserId: 1,
+  users: [
+    { id: 1, name: "ユーザー1" },
+    { id: 2, name: "ユーザー2" },
+    { id: 3, name: "ユーザー3" },
+  ],
   newItem: "",
   todos: [],
 };
 
 // Helpers
 
-const addItem = ({ newItem, todos }: Data): Data => {
+const addItem = ({ currentUserId, users, newItem, todos }: Data): Data => {
   return {
+    currentUserId,
+    users,
     newItem: "",
-    todos: [createTodo(newItem), ...todos],
+    todos: [createTodo(currentUserId, newItem), ...todos],
   };
 };
 
@@ -44,10 +61,10 @@ const deleteItem = (index: number) => (data: Data): Data => {
   };
 };
 
-const resetItem = ({ todos }: Data): Data => {
+const resetItem = (data: Data): Data => {
   return {
     newItem: "",
-    todos,
+    ...data,
   };
 };
 

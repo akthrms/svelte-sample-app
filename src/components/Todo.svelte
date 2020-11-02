@@ -3,6 +3,8 @@
   import { data } from "./../store/todo";
 
   $: isEmpty = $data.newItem.trim() === "";
+
+  $: currentTodos = $data.todos.filter((t) => t.userId === $data.currentUserId);
 </script>
 
 <style>
@@ -27,10 +29,10 @@
     <div class="field">
       <div class="control">
         <div class="select is-medium">
-          <select>
-            <option>ユーザー1</option>
-            <option>ユーザー2</option>
-            <option>ユーザー3</option>
+          <select bind:value={$data.currentUserId}>
+            {#each $data.users as { id, name }}
+              <option value={id}>{name}</option>
+            {/each}
           </select>
         </div>
       </div>
@@ -58,7 +60,7 @@
 
     <table class="table is-striped is-hoverable is-fullwidth">
       <tbody>
-        {#each $data.todos as { item, isDone }, i}
+        {#each currentTodos as { item, isDone }, i}
           <tr transition:fade>
             <td>
               <input class="checkbox" type="checkbox" bind:checked={isDone} />
